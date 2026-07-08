@@ -1,0 +1,155 @@
+/* ============ 设计 token（来源：design/html Stitch 稿） ============ */
+
+:root {
+  /* 布局 */
+  --sidebar-w: 220px;
+  --titlebar-h: 44px;
+
+  /* 圆角 */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 999px;
+
+  /* 主色（深浅一致） */
+  --color-accent: #0a84ff;
+  --color-accent-hover: #0071e3;
+  --color-accent-soft: rgba(10, 132, 255, 0.1);
+  --color-on-accent: #ffffff;
+
+  /* 红绿灯 */
+  --tl-red: #ff5f57;
+  --tl-yellow: #febc2e;
+  --tl-green: #28c840;
+}
+
+/* ---------- 浅色 ---------- */
+:root,
+:root[data-theme='light'] {
+  --color-bg: #f5f5f7;
+  --color-surface: #ffffff;
+  --color-surface-2: #f0f0f5;
+  --color-surface-3: #e8e8ed;
+  --color-sidebar-rgb: 240, 240, 245;
+  --color-text: #1d1d1f;
+  --color-text-2: #55555c;
+  --color-text-3: #86868b;
+  --color-hairline: rgba(0, 0, 0, 0.08);
+  --color-hairline-strong: rgba(0, 0, 0, 0.14);
+  --color-success: #34c759;
+  --color-success-soft: rgba(52, 199, 89, 0.12);
+  --color-error: #ff3b30;
+  --color-error-soft: rgba(255, 59, 48, 0.1);
+  --color-warning: #ff9f0a;
+  --color-hover: rgba(0, 0, 0, 0.05);
+  --color-active: rgba(0, 0, 0, 0.08);
+  --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.04);
+  --shadow-pop: 0 12px 40px rgba(0, 0, 0, 0.12);
+  --shadow-modal: 0 24px 80px rgba(0, 0, 0, 0.2);
+  --scrollbar-thumb: rgba(0, 0, 0, 0.2);
+}
+
+/* ---------- 深色 ---------- */
+:root[data-theme='dark'] {
+  --color-bg: #1c1c1e;
+  --color-surface: #2c2c2e;
+  --color-surface-2: #3a3a3c;
+  --color-surface-3: #48484a;
+  --color-sidebar-rgb: 28, 28, 30;
+  --color-text: #f2f2f7;
+  --color-text-2: rgba(235, 235, 245, 0.6);
+  --color-text-3: rgba(235, 235, 245, 0.3);
+  --color-hairline: rgba(255, 255, 255, 0.1);
+  --color-hairline-strong: rgba(255, 255, 255, 0.18);
+  --color-success: #30d158;
+  --color-success-soft: rgba(48, 209, 88, 0.16);
+  --color-error: #ff453a;
+  --color-error-soft: rgba(255, 69, 58, 0.14);
+  --color-warning: #ffd60a;
+  --color-hover: rgba(255, 255, 255, 0.07);
+  --color-active: rgba(255, 255, 255, 0.11);
+  --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.3);
+  --shadow-pop: 0 12px 40px rgba(0, 0, 0, 0.45);
+  --shadow-modal: 0 24px 80px rgba(0, 0, 0, 0.6);
+  --scrollbar-thumb: rgba(255, 255, 255, 0.25);
+}
+
+/* ---------- 动画三档 ---------- */
+:root[data-motion='full'] {
+  --dur-fast: 150ms;
+  --dur-med: 300ms;
+  --dur-slow: 450ms;
+  --ease: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --blur-vibrancy: 20px;
+  --vibrancy-alpha: 0.62;
+}
+
+:root[data-motion='reduced'] {
+  --dur-fast: 120ms;
+  --dur-med: 180ms;
+  --dur-slow: 200ms;
+  --ease: ease-out;
+  --ease-spring: ease-out;
+  --blur-vibrancy: 0px;
+  --vibrancy-alpha: 0.97;
+}
+
+:root[data-motion='off'] {
+  --dur-fast: 0ms;
+  --dur-med: 0ms;
+  --dur-slow: 0ms;
+  --ease: linear;
+  --ease-spring: linear;
+  --blur-vibrancy: 0px;
+  --vibrancy-alpha: 1;
+}
+
+:root[data-motion='off'] *,
+:root[data-motion='off'] *::before,
+:root[data-motion='off'] *::after {
+  transition-duration: 0ms !important;
+  animation-duration: 0ms !important;
+}
+
+/* ---------- 字体阶梯 ---------- */
+.t-headline-lg {
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.t-headline-md {
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.t-body-lg {
+  font-size: 15px;
+  line-height: 22px;
+  font-weight: 400;
+}
+
+.t-body-md {
+  font-size: 13px;
+  line-height: 18px;
+  font-weight: 400;
+}
+
+.t-label-md {
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.t-label-sm {
+  font-size: 11px;
+  line-height: 14px;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+}

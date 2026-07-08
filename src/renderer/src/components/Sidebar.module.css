@@ -1,0 +1,102 @@
+.sidebar {
+  width: var(--sidebar-w);
+  flex-shrink: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 14px 12px 16px;
+  background: rgba(var(--color-sidebar-rgb), var(--vibrancy-alpha));
+  backdrop-filter: blur(var(--blur-vibrancy));
+  border-right: 1px solid var(--color-hairline);
+  transition: background-color var(--dur-med) var(--ease);
+}
+
+.top {
+  height: 28px;
+  display: flex;
+  align-items: center;
+  padding: 0 4px;
+  -webkit-app-region: drag;
+  margin-bottom: 18px;
+}
+
+.logoRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 8px;
+  margin-bottom: 24px;
+}
+
+.logoMark {
+  width: 32px;
+  height: 32px;
+  border-radius: 9px;
+  background: linear-gradient(135deg, #0a84ff, #0055d4);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(10, 132, 255, 0.35);
+}
+
+.appName {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--color-text);
+  line-height: 20px;
+}
+
+.appSub {
+  font-size: 11px;
+  color: var(--color-text-3);
+  letter-spacing: 0.04em;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.spacer {
+  flex: 1;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 36px;
+  padding: 0 12px;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--color-text-2);
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  text-align: left;
+  transition:
+    background-color var(--dur-fast) var(--ease),
+    color var(--dur-fast) var(--ease),
+    transform var(--dur-fast) var(--ease);
+}
+
+.item:hover:not(.active) {
+  background: var(--color-hover);
+  color: var(--color-text);
+}
+
+.item:active {
+  transform: scale(0.98);
+}
+
+.active {
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+  box-shadow: 0 2px 8px rgba(10, 132, 255, 0.35);
+}

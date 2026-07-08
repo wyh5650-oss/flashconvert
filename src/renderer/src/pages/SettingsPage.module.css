@@ -1,0 +1,147 @@
+.page {
+  max-width: 680px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-bottom: 40px;
+}
+
+.groupTitle {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-text-3);
+  letter-spacing: 0.05em;
+  margin: 10px 4px 2px;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 13px 16px;
+  min-height: 52px;
+}
+
+.rowColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 13px 16px 16px;
+}
+
+.rowLabel {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.rowValue {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.path {
+  font-size: 13px;
+  color: var(--color-text-2);
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-hairline);
+  border-radius: 6px;
+  padding: 4px 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.divider {
+  height: 1px;
+  background: var(--color-hairline);
+  margin: 0 16px;
+}
+
+.caption {
+  font-size: 12px;
+  color: var(--color-text-3);
+}
+
+.motionCards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.motionCard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 16px 8px 12px;
+  border-radius: var(--radius-md);
+  border: 2px solid var(--color-hairline);
+  background: var(--color-surface);
+  color: var(--color-text-2);
+  font-family: inherit;
+  cursor: pointer;
+  transition:
+    border-color var(--dur-fast) var(--ease),
+    transform var(--dur-fast) var(--ease-spring),
+    box-shadow var(--dur-fast) var(--ease);
+}
+
+.motionCard:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-card);
+}
+
+.motionActive {
+  border-color: var(--color-accent);
+  color: var(--color-text);
+  box-shadow: 0 4px 14px rgba(10, 132, 255, 0.18);
+}
+
+.motionCheck {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  color: var(--color-accent);
+  line-height: 0;
+}
+
+.motionTitle {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.motionCaption {
+  font-size: 11px;
+  color: var(--color-text-3);
+  text-align: center;
+}
+
+.aboutLeft {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.aboutLogo {
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+  background: linear-gradient(135deg, #0a84ff, #0055d4);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--color-hairline);
+}
