@@ -165,7 +165,7 @@ export default function SettingsPage(): React.JSX.Element {
             <span>
               <span className={styles.rowLabel}>闪转</span>
               <span className={styles.caption} style={{ display: 'block' }}>
-                版本 0.1.0
+                版本 0.1.1
               </span>
             </span>
           </span>

@@ -1,7 +1,7 @@
 {
   "name": "flashconvert",
   "productName": "闪转",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "闪转 FlashConvert — 本地文件格式转换桌面应用",
   "main": "out/main/index.js",
   "author": "win96",
