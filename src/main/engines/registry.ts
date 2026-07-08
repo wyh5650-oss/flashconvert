@@ -6,6 +6,7 @@ import { audioEngine, videoEngine } from './ffmpegAv'
 import { pandocEngine } from './pandocEngine'
 import { officeEngine } from './officeEngine'
 import { chromiumPdfEngine } from './chromiumPdf'
+import { pdfEngine } from './pdfEngine'
 import { archiveEngine } from './archiveEngine'
 
 /** 能力注册表：顺序即优先级（sharp 快于兜底；Office→PDF 优先 LibreOffice，Chromium 兜底）。 */
@@ -18,6 +19,7 @@ const adapters: EngineAdapter[] = [
   pandocEngine,
   officeEngine,
   chromiumPdfEngine,
+  pdfEngine,
   archiveEngine
 ]
 

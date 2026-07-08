@@ -408,6 +408,53 @@ export async function runSelfTest(samplesDir?: string): Promise<void> {
     record('md→rtf', false, String(e))
   }
 
+  /* ---------- PDF 输入（PDF.js 引擎），复用上面生成的真实 PDF ---------- */
+  const pdfInput = join(dir, 'doc-pdf-md.pdf')
+  record(
+    '能力表 pdf→png/jpg/txt/docx',
+    ['png', 'jpg', 'txt', 'docx'].every((t) => targetsFor('pdf').includes(t)),
+    targetsFor('pdf').join(',')
+  )
+
+  queue.add([mk('pdf-png', pdfInput, 'png', { ...DEFAULT_OPTIONS.document })])
+  try {
+    const final = await wait('pdf-png', 180_000)
+    let ok = false
+    let detail = final.type === 'error' ? final.message : ''
+    if (final.type === 'done') {
+      const buf = await readFile(join(dir, 'pdf-png.png'))
+      ok = buf.length > 0 && buf[0] === 0x89 && buf.subarray(1, 4).toString() === 'PNG'
+      detail = `${(buf.length / 1024).toFixed(0)} KB`
+    }
+    record('pdf→png（PDF.js 渲染）', ok, detail)
+  } catch (e) {
+    record('pdf→png（PDF.js 渲染）', false, String(e))
+  }
+
+  queue.add([mk('pdf-txt', pdfInput, 'txt', { ...DEFAULT_OPTIONS.document })])
+  try {
+    const final = await wait('pdf-txt', 180_000)
+    let ok = false
+    let detail = final.type === 'error' ? final.message : ''
+    if (final.type === 'done') {
+      const text = await readFile(join(dir, 'pdf-txt.txt'), 'utf8')
+      ok = text.includes('闪转测试文档')
+      detail = `${text.length} chars`
+    }
+    record('pdf→txt（文本提取）', ok, detail)
+  } catch (e) {
+    record('pdf→txt（文本提取）', false, String(e))
+  }
+
+  queue.add([mk('pdf-docx', pdfInput, 'docx', { ...DEFAULT_OPTIONS.document })])
+  try {
+    const final = await wait('pdf-docx', 180_000)
+    record('pdf→docx（提取文本+Pandoc）', final.type === 'done' && (await fileSize(join(dir, 'pdf-docx.docx'))) > 0,
+      final.type === 'error' ? final.message : '')
+  } catch (e) {
+    record('pdf→docx（提取文本+Pandoc）', false, String(e))
+  }
+
   const soffice = detectSoffice()
   if (soffice) {
     queue.add([mk('doc-pdf', join(dir, 'doc-docx.docx'), 'pdf', { ...DEFAULT_OPTIONS.document })])
