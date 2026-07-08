@@ -101,6 +101,8 @@ export interface SettingsData {
   keepOriginal: boolean
   language: 'zh-CN' | 'en'
   autoStart: boolean
+  /** GPU 硬件加速总开关：关闭时视频转码强制软件编码 */
+  gpuAccel: boolean
   /** 赞助弹窗是否已自动弹出过（只弹一次） */
   sponsorShown: boolean
   /** 成功完成的转换批次数（用于赞助弹窗触发） */

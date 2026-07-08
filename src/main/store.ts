@@ -19,6 +19,7 @@ const SETTINGS_DEFAULTS: SettingsData = {
   keepOriginal: true,
   language: 'zh-CN',
   autoStart: false,
+  gpuAccel: true,
   sponsorShown: false,
   doneBatches: 0
 }

@@ -20,6 +20,7 @@ export const useSettingsStore = create<SettingsState>((set, get) => ({
   keepOriginal: true,
   language: 'zh-CN',
   autoStart: false,
+  gpuAccel: true,
   sponsorShown: false,
   doneBatches: 0,
   hydrated: false,

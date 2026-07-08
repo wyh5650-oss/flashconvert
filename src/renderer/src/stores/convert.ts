@@ -131,13 +131,17 @@ export const useConvertStore = create<ConvertState>((set, get) => {
         }
         if (get().items.some((it) => it.file.path === file.path)) continue
         const targets = await targetsForExt(file.ext)
+        const options = { ...DEFAULT_OPTIONS[category] }
+        if (options.kind === 'video') {
+          options.hwaccel = useSettingsStore.getState().gpuAccel ? 'auto' : 'off'
+        }
         additions.push({
           id: crypto.randomUUID(),
           file,
           category,
           targets,
           target: targets[0] ?? '',
-          options: { ...DEFAULT_OPTIONS[category] },
+          options,
           status: 'idle',
           progress: 0
         })
@@ -181,11 +185,16 @@ export const useConvertStore = create<ConvertState>((set, get) => {
             : it
         )
       }))
+      // GPU 总开关关闭时，强制所有视频任务走软件编码（覆盖单文件设置）
+      const gpuAccel = useSettingsStore.getState().gpuAccel
       const requests: ConversionRequest[] = supported.map((it) => ({
         id: it.id,
         inputPath: it.file.path,
         target: it.target,
-        options: it.options,
+        options:
+          !gpuAccel && it.options.kind === 'video'
+            ? { ...it.options, hwaccel: 'off' }
+            : it.options,
         outputDir
       }))
       try {

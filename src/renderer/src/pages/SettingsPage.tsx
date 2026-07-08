@@ -98,6 +98,20 @@ export default function SettingsPage(): React.JSX.Element {
         </div>
         <div className={styles.divider} />
         <div className={styles.row}>
+          <span>
+            <span className={styles.rowLabel}>GPU 硬件加速</span>
+            <span className={styles.caption} style={{ display: 'block', marginTop: 2 }}>
+              自动探测 NVIDIA / Intel / AMD 编码器，失败自动回退软件编码
+            </span>
+          </span>
+          <Switch
+            checked={settings.gpuAccel}
+            onChange={(v) => settings.set('gpuAccel', v)}
+            aria-label="GPU 硬件加速"
+          />
+        </div>
+        <div className={styles.divider} />
+        <div className={styles.row}>
           <span className={styles.rowLabel}>完成后系统通知</span>
           <Switch
             checked={settings.notifyOnDone}
